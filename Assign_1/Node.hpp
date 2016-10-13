@@ -20,13 +20,17 @@ private:
     
 public:
     Node(E content){
-        std::cout << "Setting content\n";
+//        std::cout << "Setting content\n";
         this->content = content;
-        std::cout << "Setting next\n";
+//        std::cout << "Setting next\n";
         next = this;
-        std::cout << "Setting prev\n";
+//        std::cout << "Setting prev\n";
         prev = this;
-        std::cout << "Set all\n";
+//        std::cout << "Set all\n";
+        
+//        std::cout << "Node Creation Next Content: " << (*next).getContent() << std::endl;
+//        std::cout << "Node Creation Prev Content: " << (*prev).getContent() << std::endl;
+        
     }
     
     Node(Node<E>* prevNode, E content, Node<E>* nextNode){
@@ -35,6 +39,9 @@ public:
         prev = prevNode;
     }
     
+    ~Node(){
+    
+    }
     
     E getContent(){
         return content;

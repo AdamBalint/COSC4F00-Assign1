@@ -28,15 +28,18 @@ public:
         
     }
     
-    Node<E>* previous(){
+    void previous(){
         current = (*current).prevNode();
     }
     
-    Node<E>* next(){
+    void next(){
         current = (*current).nextNode();
     }
     
     E getContent(){
+        if (size == 0)
+            throw "\nEmpty List Exception\n";
+        
         return (*current).getContent();
     }
     
@@ -46,13 +49,16 @@ public:
     
     void remove(){
         if (size > 1){
-            (*(*current).prevNode()).setNext((*current).nextNode());
+            (*(*current).prevNode()).setNext(((*current).nextNode()));
             (*(*current).nextNode()).setPrev((*current).prevNode());
+            Node<E>* old = current;
             current = (*current).nextNode();
+            delete(old);
             size--;
         }
         else {
             size--;
+            delete(current);
             current = nullptr;
         }
         
@@ -68,16 +74,43 @@ public:
     }
     
     void insertBefore(E content){
+        //Create new node with correct previous and next pointers
+        Node<E>* n = new Node<E>((*current).prevNode(), content, current);
         
+        //std::cout << "Insert Content: " << n->getContent() << std::endl;
+        
+        //set current's next's previous node to the new node
+        current->prevNode()->setNext(n);
+        
+        //set current's next to the new node
+        current->setPrev(n);
+        
+        //increase the size
+        size++;
+
     }
     
     void insertAfter(E content){
-    
+        //Create new node with correct previous and next pointers
+        Node<E>* n = new Node<E>(current, content, (*current).nextNode());
+        
+        //std::cout << "Insert Content: " << n->getContent() << std::endl;
+        
+        //set current's next's previous node to the new node
+        current->nextNode()->setPrev(n);
+        
+        //set current's next to the new node
+        current->setNext(n);
+        
+        //increase the size
+        size++;
     }
     
     void insert(E content){
-        if (size == 0)
-            current = Node<E>(content);
+        if (size == 0){
+            current = (new Node<E>(content));
+            size ++;
+        }
         else
             insertAfter(content);
     }
@@ -91,7 +124,9 @@ public:
     }
     
     void removeAll(){
-    
+        while (size != 0){
+            remove();
+        }
     }
     
     bool isNull(){
