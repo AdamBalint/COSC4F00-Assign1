@@ -13,33 +13,14 @@
 #include <sstream>
 
 
-void testSize();            // s
-void testPrint();           // print
-void testInsert();          // i
-void testInsertBefore();    // ib
-void testInsertAfter();     // ia
-void testRemove();          // r
-void testRemoveBefore();    // rb
-void testRemoveAfter();     // ra
-void testGetContent();      // get
-void testSetContent();      // set
-void testNext();            // next
-void testPrevious();        // prev
-void testRemoveAll();       // rma
-                            // quit
-
-
 //splits the given string by spaces
 std::vector<std::string> split(std::string s){
     std::vector<std::string> res;
     std::stringstream ss(s);
     std::string tmp;
     
-//    std::cout << "Input: " + s << std::endl;
-    
     while(std::getline(ss, tmp, ' ')) {
         res.push_back(tmp);
-//        std::cout << "pushed: " << tmp << std::endl;
     }
     return res;
 }
@@ -65,8 +46,6 @@ int main(int argc, const char * argv[]) {
             std::string cmd = parts[0];
             std::string args = "";
             
-//            std::cout << "Parts size: " << parts.size() << std::endl;
-            
             // combines arguments
             if (parts.size() > 1){
                 std::stringstream ss;
@@ -76,8 +55,6 @@ int main(int argc, const char * argv[]) {
                         args += " ";
                 }
             }
-            
-//            std::cout << "Args: " << args << std::endl;
             
             // Does action requested and prints out the result
             if (cmd.compare("s") == 0){

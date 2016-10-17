@@ -218,6 +218,5 @@ public:
         return false;
     }
     
-    //copy?
     
 };
