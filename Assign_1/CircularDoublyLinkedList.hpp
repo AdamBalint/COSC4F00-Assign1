@@ -91,12 +91,6 @@ public:
             remove();
         }
         else {
-            /*(*(*current).prevNode()).prevNode()->setNext(current);
-            (*current).setPrev((*(*current).prevNode()).prevNode());
-            Node<E>* old = (*current).prevNode();
-            //current = (*current).nextNode();
-            delete (old);
-            size--;*/
             previous();
             remove();
         }
@@ -107,12 +101,6 @@ public:
         if (size <= 1){
             remove();
         }else {
-           /* (*(*current).nextNode()).nextNode()->setPrev(current);
-            (*current).setNext((*(*current).nextNode()).nextNode());
-            Node<E>* old = (*current).nextNode();
-           // current = (*current).nextNode();
-            delete (old);
-            size--;*/
             next();
             remove();
             previous();
