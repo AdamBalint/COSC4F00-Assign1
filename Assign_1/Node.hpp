@@ -13,56 +13,61 @@
 
 template <typename E> class Node{
     
+// Holds the content, the next and previous nodes
 private:
     Node* next;
     Node* prev;
     E content;
     
 public:
+    
+    // Creates a new node with the the given content
+    // ! element circular linked list
     Node(E content){
-//        std::cout << "Setting content\n";
         this->content = content;
-//        std::cout << "Setting next\n";
         next = this;
-//        std::cout << "Setting prev\n";
         prev = this;
-//        std::cout << "Set all\n";
-        
-//        std::cout << "Node Creation Next Content: " << (*next).getContent() << std::endl;
-//        std::cout << "Node Creation Prev Content: " << (*prev).getContent() << std::endl;
-        
     }
     
+    // Creates a new node by fitting it into the list
+    // Has a next and previous node other than itself
     Node(Node<E>* prevNode, E content, Node<E>* nextNode){
         this->content = content;
         next = nextNode;
         prev = prevNode;
     }
     
+    // The destructor for the node
     ~Node(){
     
     }
     
+    // Returns the content of the node
     E getContent(){
         return content;
     }
     
+    // Sets the content of the node
+    void setContent(E cont){
+        content = cont;
+    }
     
+    // Returns the next node
     Node<E>* nextNode(){
         return next;
     }
     
-    
+    // Returns the previous node
     Node<E>* prevNode(){
         return prev;
     }
     
-    
+    // Sets the next node
     void setNext(Node<E>* nextNode){
         next = nextNode;
     }
     
-    
+    // Sets the previous node
     void setPrev(Node<E>* prevNode){
         prev = prevNode;
     }
